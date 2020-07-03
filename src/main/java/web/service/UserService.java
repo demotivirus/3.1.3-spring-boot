@@ -1,20 +1,46 @@
 package web.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import web.dao.UserRepository;
 import web.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface UserService extends UserDetailsService {
-    void add(User user);
+@Service
+public class UserService implements UserDetailsService {
 
-    List<User> listUsers();
+    @Autowired
+    private UserRepository userRepository;
 
-    void delete(Long id);
+    public List<User> getAll() {
+        return (List<User>) userRepository.findAll();
+    }
 
-    void edit(User user);
+    public Optional<User> getOne(Long id) {
+        return userRepository.findById(id);
+    }
 
-    User getUserFromId(Long id);
+    public void addNew(User user) {  userRepository.save(user);  }
 
-    User findUserByName(String name);
+    public void update(User user) {
+        userRepository.save(user);
+    }
+
+    public void delete(Long Id) {
+        userRepository.deleteById(Id);
+    }
+
+    @Override
+    @Transactional
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+       List<User> uL = (List<User>) userRepository.findAll();
+       Optional<User> usr = uL.stream().filter(user -> user.getLogin().equals(name)).findFirst();
+       return (UserDetails) getOne(usr.get().getId()).get();
+    }
 }

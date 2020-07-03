@@ -1,17 +1,37 @@
 package web.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import web.dao.RoleRepository;
 import web.model.Role;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface RoleService {
-    Role getRoleById(long id);
+@Service
+public class RoleService {
 
-    void addRole(Role role);
+    @Autowired
+    private RoleRepository roleRepository;
 
-    void editRole(Role role);
+    public List<Role> getAll() {
+        return (List<Role>) roleRepository.findAll();
+    }
 
-    void deleteRole(long id);
+    public Optional<Role> getOne(Long id) {
+        return roleRepository.findById(id);
+    }
 
-    List<Role> getRoles();
+    public void addNew(Role role) {
+        roleRepository.save(role);
+    }
+
+    public void update(Role role) {
+        roleRepository.save(role);
+    }
+
+    public void delete(Long Id) {
+        roleRepository.deleteById(Id);
+    }
+
 }

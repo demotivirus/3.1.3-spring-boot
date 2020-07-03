@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper">
+    <nav id="sidebar">
+        <ul class="components">
+            <li>
+                <a href="/admin">Admin</a>
+            </li>
+            <li>
+                <a href="/user">User</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <nav class="navbar-expand">
+            <div class="container-fluid">
+                Exit
+            </div>
+
+            <h3 align="center">Admin panel</h3>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="list-tabs">
+                                <ul class="nav-card-header" id="myTab" role="tablist">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" id="userTable" data-toggle="tab" href="#one" role="tab" aria-selected="true">User table</a>
+                                    </li>
+                                    <li>
+                                        <a href="#two" aria-selected="false">New user</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="tab-content" id="contentTab">
+                                <div class="tab-content-1">
+                                    <h5>All users</h5>
+
+                                    <table class="user-table" id="tableOfAllUsers">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th>sdf</th>
+                                            <th>sdfsdf</th>
+                                            <th>sdfsdfsd</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="tab-content-2">
+                                    <div class="card-header text-left">Add new user</div>
+
+                                    <div class="flex">
+                                        <div class="form-group">
+                                            <label for="userIdToAdd">ID</label>
+                                            <input type="number" id="userIdToAdd" class="form-control" placeholder="Enter ID" name="id"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="userNameToAdd">Name</label>
+                                            <input type="text" id="userNameToAdd" class="form-control" placeholder="Enter name" name="name"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="userRole">Select role</label>
+                                            <select th:name="roleId" class="form-control" id="userRole">
+                                                <option value="1">ADMIN</option>
+                                                <option value="2">USER</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="btn">
+                                            <button id="addUserButton" type="submit" class="btn-success">Add user</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+    </div>
+</div>
+</body>
+</html>

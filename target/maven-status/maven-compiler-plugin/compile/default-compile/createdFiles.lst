@@ -1,0 +1,14 @@
+web\service\UserService.class
+web\dao\UserRepository.class
+web\service\RoleService.class
+web\model\Role.class
+web\security\LoginSuccessHandler.class
+web\controller\UserController.class
+web\dao\RoleRepository.class
+web\dao\ProductRepository.class
+web\model\Product.class
+web\security\SecurityConfig.class
+web\Application.class
+web\controller\ProductController.class
+web\service\ProductService.class
+web\model\User.class

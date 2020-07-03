@@ -17,7 +17,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping("product/")
+    @RequestMapping("product")
     public String home(Model model){
         List<Product> list = productService.listAll();
         model.addAttribute("listProducts", list);
